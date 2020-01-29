@@ -1,8 +1,8 @@
 use clap::App;
 
-pub fn new<'a>() -> App<'a> {
+pub fn new<'a>(version: &'a str) -> App<'a> {
     App::new("awsctl")
-        .version("v0.0.1")
+        .version(version)
         .author("ymgyt")
         .subcommand(
             App::new("dynamo")

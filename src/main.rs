@@ -2,9 +2,11 @@ use awsctl::cmd;
 use std::error::Error;
 
 fn main() {
-    let m = cmd::new().get_matches();
+    let version = env!("CARGO_PKG_VERSION");
 
-    let result: Result<(), Box<dyn Error>> = match m.subcommand() {
+    let arg = cmd::new(version).get_matches();
+
+    let result: Result<(), Box<dyn Error>> = match arg.subcommand() {
         ("dynamo", Some(_sub_m)) => {
             println!("dynamo cmd called!");
             Ok(())
@@ -17,3 +19,4 @@ fn main() {
         std::process::exit(1);
     }
 }
+
